@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2k5f1b4ohgfk"]
+
+[ext_resource type="Script" path="res://btnexit.gd" id="1_7lf7c"]
+
+[node name="Prog_115a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 1154.0
+offset_bottom = 423.0
+
+[node name="btncalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 525.0
+offset_right = 168.0
+offset_bottom = 643.0
+text = "Caculate "
+
+[node name="btnclear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 983.0
+offset_top = 525.0
+offset_right = 1153.0
+offset_bottom = 643.0
+text = "Exit
+"
+
+[node name="btnexit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 451.0
+offset_top = 528.0
+offset_right = 621.0
+offset_bottom = 646.0
+text = "Clear
+"
+script = ExtResource("1_7lf7c")
+
+[connection signal="pressed" from="btncalc" to="btnexit" method="_on_btncalc_pressed"]
+[connection signal="pressed" from="btnclear" to="btnexit" method="_on_btnclear_pressed"]
+[connection signal="pressed" from="btnexit" to="btnexit" method="_on_pressed"]

@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcq7avascfcj6"]
+
+[ext_resource type="Script" path="res://prog_122a.gd" id="1_agplh"]
+
+[node name="prog_122a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_agplh")
+
+[node name="btncalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 486.0
+offset_right = 262.0
+offset_bottom = 646.0
+text = "Caculate 
+"
+
+[node name="btnclear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 486.0
+offset_right = 696.0
+offset_bottom = 646.0
+text = "Clear"
+
+[node name="btnexit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 892.0
+offset_top = 482.0
+offset_right = 1152.0
+offset_bottom = 642.0
+text = "Exit"
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 1152.0
+offset_bottom = 336.0
+
+[connection signal="pressed" from="btncalc" to="." method="_on_btncalc_pressed"]
+[connection signal="pressed" from="btnclear" to="." method="_on_btnclear_pressed"]
+[connection signal="pressed" from="btnexit" to="." method="_on_btnexit_pressed"]

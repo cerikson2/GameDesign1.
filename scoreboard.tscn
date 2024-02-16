@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://yktycerd7j1g"]
+
+[ext_resource type="Script" path="res://Scoreboard.gd" id="1_tjkk5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hi7xp"]
+font_size = 35
+font_color = Color(1, 1, 0.156863, 1)
+
+[node name="Scoreboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tjkk5")
+
+[node name="lbl" type="Label" parent="."]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 42.0
+offset_right = 524.0
+offset_bottom = 104.0
+text = "Modify Points (add/sub):"
+label_settings = SubResource("LabelSettings_hi7xp")
+
+[node name="lblout" type="Label" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 116.0
+offset_right = 1062.0
+offset_bottom = 553.0
+text = "0"
+label_settings = SubResource("LabelSettings_hi7xp")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 479.0
+offset_top = 38.0
+offset_right = 938.0
+offset_bottom = 100.0
+text = "add"
+
+[node name="btnupdate" type="Button" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 498.0
+offset_right = 216.0
+offset_bottom = 647.0
+text = "UPDATE
+"
+
+[node name="btnreset" type="Button" parent="."]
+layout_mode = 0
+offset_left = 940.0
+offset_top = 500.0
+offset_right = 1152.0
+offset_bottom = 649.0
+text = "Reset"
+
+[connection signal="pressed" from="btnupdate" to="." method="_on_btnupdate_pressed"]
+[connection signal="pressed" from="btnreset" to="." method="_on_btnreset_pressed"]

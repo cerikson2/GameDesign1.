@@ -1,0 +1,100 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyl2earkc7tkx"]
+
+[ext_resource type="Script" path="res://Prog52a.gd" id="1_x8nom"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_onk1r"]
+font_size = 28
+font_color = Color(1, 0, 1, 1)
+
+[node name="Prog52a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x8nom")
+
+[node name="Length" type="Label" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 310.0
+offset_bottom = 175.0
+text = "Length:"
+label_settings = SubResource("LabelSettings_onk1r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Width" type="Label" parent="."]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 145.0
+offset_right = 301.0
+offset_bottom = 270.0
+text = "Width:"
+label_settings = SubResource("LabelSettings_onk1r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area" type="Label" parent="."]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 300.0
+offset_right = 753.0
+offset_bottom = 431.0
+text = "Area:"
+label_settings = SubResource("LabelSettings_onk1r")
+vertical_alignment = 1
+
+[node name="Perimeter" type="Label" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 370.0
+offset_right = 752.0
+offset_bottom = 501.0
+text = "Perimeter:"
+label_settings = SubResource("LabelSettings_onk1r")
+vertical_alignment = 1
+
+[node name="bottom" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 282.0
+offset_top = 174.0
+offset_right = 650.0
+offset_bottom = 261.0
+
+[node name="topedit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 283.0
+offset_top = 68.0
+offset_right = 651.0
+offset_bottom = 155.0
+
+[node name="Cac" type="Button" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 526.0
+offset_right = 303.0
+offset_bottom = 642.0
+text = "Caculate"
+
+[node name="Clear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 451.0
+offset_top = 517.0
+offset_right = 703.0
+offset_bottom = 650.0
+text = "Clear"
+
+[node name="ext" type="Button" parent="."]
+layout_mode = 0
+offset_left = 885.0
+offset_top = 519.0
+offset_right = 1154.0
+offset_bottom = 644.0
+text = "Exit "
+
+[connection signal="pressed" from="Cac" to="." method="_on_cac_pressed"]
+[connection signal="pressed" from="Clear" to="." method="_on_clear_pressed"]
+[connection signal="pressed" from="ext" to="." method="_on_ext_pressed"]

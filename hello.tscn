@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3cw3d5ksncrw"]
+
+[ext_resource type="Script" path="res://hello.gd" id="1_b86nu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7c8vj"]
+font_size = 22
+
+[node name="Hello" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 3.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b86nu")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 298.0
+offset_top = 234.0
+offset_right = 784.0
+offset_bottom = 377.0
+text = "Hi
+"
+label_settings = SubResource("LabelSettings_7c8vj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 478.0
+offset_right = 321.0
+offset_bottom = 579.0
+text = "Show
+"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 799.0
+offset_top = 474.0
+offset_right = 1026.0
+offset_bottom = 575.0
+text = "Clear"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

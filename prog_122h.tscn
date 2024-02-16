@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwjbc6cvbc0qp"]
+
+[ext_resource type="Script" path="res://prog_122h.gd" id="1_me3tv"]
+
+[node name="prog_122h" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_me3tv")
+
+[node name="btncalc" type="Button" parent="."]
+layout_mode = 0
+offset_top = 572.0
+offset_right = 243.0
+offset_bottom = 648.0
+text = "Calculate"
+
+[node name="btnclear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 572.0
+offset_right = 682.0
+offset_bottom = 648.0
+text = "Clear"
+
+[node name="btnexit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 906.0
+offset_top = 572.0
+offset_right = 1149.0
+offset_bottom = 648.0
+text = "Exit"
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_right = 1155.0
+offset_bottom = 510.0
+
+[connection signal="pressed" from="btncalc" to="." method="_on_btncalc_pressed"]
+[connection signal="pressed" from="btnclear" to="." method="_on_btnclear_pressed"]
+[connection signal="pressed" from="btnexit" to="." method="_on_btnexit_pressed"]

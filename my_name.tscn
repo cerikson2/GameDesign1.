@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0hc2gv74gfdw"]
+
+[ext_resource type="Script" path="res://MyName.gd" id="1_n56s7"]
+
+[node name="MyName" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n56s7")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 200.0
+offset_right = 1020.0
+offset_bottom = 313.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btnshow" type="Button" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 488.0
+offset_right = 278.0
+offset_bottom = 648.0
+text = "Show
+"
+
+[node name="btnclear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 484.0
+offset_right = 714.0
+offset_bottom = 644.0
+text = "Clear
+"
+
+[node name="btnexit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 880.0
+offset_top = 488.0
+offset_right = 1154.0
+offset_bottom = 648.0
+text = "Exit"
+
+[connection signal="pressed" from="btnshow" to="." method="_on_btnshow_pressed"]
+[connection signal="pressed" from="btnclear" to="." method="_on_btnclear_pressed"]
+[connection signal="pressed" from="btnexit" to="." method="_on_btnexit_pressed"]

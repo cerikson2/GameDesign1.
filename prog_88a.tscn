@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqu3jheemam0k"]
+
+[ext_resource type="Script" path="res://Prog88a.gd" id="1_458si"]
+
+[node name="Prog88a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_458si")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 64.0
+offset_right = 416.0
+offset_bottom = 127.0
+
+[node name="LineEdit2" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 691.0
+offset_top = 67.0
+offset_right = 920.0
+offset_bottom = 128.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 159.0
+offset_right = 1030.0
+offset_bottom = 503.0
+
+[node name="btncalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 575.0
+offset_right = 216.0
+offset_bottom = 647.0
+text = "Caculate"
+
+[node name="btnexit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 999.0
+offset_top = 575.0
+offset_right = 1151.0
+offset_bottom = 647.0
+text = "Exit"
+
+[node name="btnclear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 575.0
+offset_right = 673.0
+offset_bottom = 647.0
+text = "Clear"
+
+[connection signal="pressed" from="btncalc" to="." method="_on_btncalc_pressed"]
+[connection signal="pressed" from="btnexit" to="." method="_on_btnexit_pressed"]
+[connection signal="pressed" from="btnclear" to="." method="_on_btnclear_pressed"]

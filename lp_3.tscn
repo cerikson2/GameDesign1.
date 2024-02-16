@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhlgiri6p6kw0"]
+
+[ext_resource type="Script" path="res://LP_3.gd" id="1_weyrv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c0i0b"]
+font_size = 30
+
+[node name="LP_3" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_weyrv")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 58.0
+offset_right = 485.0
+offset_bottom = 311.0
+text = "Enter # of Eggs purchased:"
+label_settings = SubResource("LabelSettings_c0i0b")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 441.0
+offset_top = 53.0
+offset_right = 812.0
+offset_bottom = 116.0
+
+[node name="btncalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 534.0
+offset_right = 211.0
+offset_bottom = 645.0
+text = "Caculate "
+
+[node name="btnclear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 534.0
+offset_right = 641.0
+offset_bottom = 645.0
+text = "Clear"
+
+[node name="btnexit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 925.0
+offset_top = 539.0
+offset_right = 1127.0
+offset_bottom = 650.0
+text = "Exit"
+
+[node name="lblout" type="Label" parent="."]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 147.0
+offset_right = 1085.0
+offset_bottom = 497.0
+
+[connection signal="pressed" from="btncalc" to="." method="_on_btncalc_pressed"]
+[connection signal="pressed" from="btnclear" to="." method="_on_btnclear_pressed"]
+[connection signal="pressed" from="btnexit" to="." method="_on_btnexit_pressed"]

@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://lpusofhd7c7v"]
+
+[ext_resource type="Script" path="res://LP4-1.gd" id="1_4mya8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ivswa"]
+font_size = 30
+
+[node name="LP4-1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4mya8")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 58.0
+offset_right = 485.0
+offset_bottom = 311.0
+text = "Enter # of copies to print:"
+label_settings = SubResource("LabelSettings_ivswa")
+
+[node name="lblout" type="Label" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 154.0
+offset_right = 1108.0
+offset_bottom = 473.0
+label_settings = SubResource("LabelSettings_ivswa")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 433.0
+offset_top = 50.0
+offset_right = 804.0
+offset_bottom = 113.0
+
+[node name="btncalc" type="Button" parent="."]
+layout_mode = 0
+offset_top = 530.0
+offset_right = 232.0
+offset_bottom = 646.0
+text = "Caculate"
+
+[node name="btnexit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 918.0
+offset_top = 530.0
+offset_right = 1150.0
+offset_bottom = 646.0
+text = "Exit"
+
+[node name="btnclear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 528.0
+offset_right = 681.0
+offset_bottom = 644.0
+text = "Clear"
+
+[connection signal="pressed" from="btncalc" to="." method="_on_btncalc_pressed"]
+[connection signal="pressed" from="btnclear" to="." method="_on_btnclear_pressed"]
