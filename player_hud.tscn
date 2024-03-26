@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://PlayerHud.gd" id="1_hcoio"]
 [ext_resource type="Texture2D" uid="uid://bpkrs66jkprc3" path="res://assets/sprites/zelda_like/objects.png" id="2_33kpe"]
 
-[node name="PlayerHud" type="CanvasLayer" groups=["HUD"]]
+[node name="player_hud" type="CanvasLayer" groups=["HUD"]]
 script = ExtResource("1_hcoio")
 
 [node name="PlayerHealth" type="Control" parent="."]
