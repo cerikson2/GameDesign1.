@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://630dbur2rnj4"]
+[gd_scene load_steps=8 format=3 uid="uid://630dbur2rnj4"]
 
 [ext_resource type="Texture2D" uid="uid://bnpggdagc5186" path="res://assets/sprites/zelda_like/Overworld.png" id="1_k6ylj"]
 [ext_resource type="PackedScene" uid="uid://cjkddr3rdhd18" path="res://td_player.tscn" id="2_3k3r7"]
 [ext_resource type="PackedScene" uid="uid://d0hc2gv74gfdw" path="res://my_name.tscn" id="2_mijuc"]
 [ext_resource type="PackedScene" uid="uid://b07tr3mbkj3gx" path="res://player_hud.tscn" id="4_c1yo1"]
+[ext_resource type="PackedScene" uid="uid://bderauh1yi81e" path="res://td_enemy.tscn" id="5_d2bdq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_74k1s"]
 texture = ExtResource("1_k6ylj")
@@ -3174,3 +3175,12 @@ visible = false
 position = Vector2(250, 360)
 
 [node name="player_hud" parent="." instance=ExtResource("4_c1yo1")]
+
+[node name="td_enemy" parent="." instance=ExtResource("5_d2bdq")]
+position = Vector2(964, 500)
+
+[node name="td_enemy2" parent="." instance=ExtResource("5_d2bdq")]
+position = Vector2(861, 214)
+
+[node name="td_enemy3" parent="." instance=ExtResource("5_d2bdq")]
+position = Vector2(405, 281)
