@@ -1,22 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://mtg4dplgg8yx"]
+[gd_scene load_steps=8 format=3 uid="uid://dtm3epax7r8jh"]
 
-[ext_resource type="Script" path="res://coin.gd" id="1_103im"]
-[ext_resource type="Texture2D" uid="uid://bpkrs66jkprc3" path="res://assets/sprites/zelda_like/objects.png" id="2_f8xtf"]
+[ext_resource type="Script" path="res://coin.gd" id="1_wvs4u"]
+[ext_resource type="Texture2D" uid="uid://bpkrs66jkprc3" path="res://assets/sprites/zelda_like/objects.png" id="2_xoe8d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xkt6a"]
-atlas = ExtResource("2_f8xtf")
+atlas = ExtResource("2_xoe8d")
 region = Rect2(0, 63, 16, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pqdh8"]
-atlas = ExtResource("2_f8xtf")
+atlas = ExtResource("2_xoe8d")
 region = Rect2(16, 63, 16, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jxslf"]
-atlas = ExtResource("2_f8xtf")
+atlas = ExtResource("2_xoe8d")
 region = Rect2(32, 63, 16, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajfvc"]
-atlas = ExtResource("2_f8xtf")
+atlas = ExtResource("2_xoe8d")
 region = Rect2(48, 63, 16, 21)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_asyhb"]
@@ -40,10 +40,10 @@ animations = [{
 }]
 
 [node name="coin" type="Node2D" groups=["coin"]]
-script = ExtResource("1_103im")
+script = ExtResource("1_wvs4u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(27.5, 25.75)
 scale = Vector2(2.6875, 2.21429)
 sprite_frames = SubResource("SpriteFrames_asyhb")
-frame_progress = 0.420224
+frame_progress = 0.532705

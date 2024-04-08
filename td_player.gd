@@ -23,6 +23,7 @@ var charge_start_time = 0.0
 
 var slash_scene = preload("res://entities/attacks/slash.tscn")
 var menu_scene = preload("res://my_gui.tscn")
+var damage_shader = preload("res://assets/shaders/take_damage.tres")
 var menu_instance = null
 
 @onready var p_HUD = get_tree().get_first_node_in_group("HUD")
@@ -44,35 +45,53 @@ func attack():
 	slash.rotation = Vector2().angle_to_point(-attack_direction)
 	add_child(slash)
 	animation_lock = 0.2
-	
-
-func pickup_money(value):
-	data.money += value
-
 
 func charged_attack():
 	data.state = STATES.ATTACKING
 	$AnimatedSprite2D.play("swipe_charge")
 	attack_direction = look_direction
-	damage_lock = 0.3 
+	damage_lock = 0.3
 	for i in range(9):
-		#Offest by (i-4) * 45 Degrees 
-		var angle = -attack_direction.angle() + (i-4) * PI / 4 
+		# Offset by (i-4) * 45 degrees
+		var angle = -attack_direction.angle() + (i-4) * PI / 4  # [-4,4]
 		var dir = Vector2(cos(angle), sin(angle))
 		var slash = slash_scene.instantiate()
-		slash.position = dir * 20 
+		slash.position = dir * 20
 		slash.rotation = Vector2().angle_to_point(-dir)
-		slash.damage *= 1.5 
+		slash.damage *= 1.5
 		add_child(slash)
 		await get_tree().create_timer(0.03).timeout
-	animation_lock = 0.2 
-	await $AnimatedSprite2D.animation_finished 
+	animation_lock = 0.2
+	await $AnimatedSprite2D.animation_finished
 	data.state = STATES.IDLE
 	pass
+
+func pickup_money(value):
+	data.money += value
 
 func pickup_health(value):
 	data.health += value
 	data.health = clamp(data.health, 0, data.max_health)
+
+signal health_depleted
+
+func take_damage(dmg):
+	if damage_lock == 0.0:
+		data.health -= dmg
+		data.state = STATES.DAMAGED
+		damage_lock = 0.5
+		animation_lock = dmg * 0.005
+		$AnimatedSprite2D.material = damage_shader.duplicate()
+		$AnimatedSprite2D.material.set_shader_parameter("intensity", 0.5)
+		if data.health <= 0:
+			data.state = STATES.DEAD
+			# TODO: play death animation & sound
+			await get_tree().create_timer(0.5).timeout
+			health_depleted.emit()
+		else:
+			# TODO: play damage sound
+			pass
+	pass
 
 func _ready():
 	p_HUD.show()
@@ -85,6 +104,9 @@ func _physics_process(delta):
 	damage_lock = max(damage_lock-delta, 0.0)
 	
 	if animation_lock == 0.0 and data.state != STATES.DEAD:
+		if data.state == STATES.DAMAGED and max(damage_lock-delta, 0.0):
+			$AnimatedSprite2D.material = null
+		
 		if data.state != STATES.CHARGING:
 			data.state = STATES.IDLE
 		
@@ -107,36 +129,36 @@ func _physics_process(delta):
 	if data.state != STATES.DEAD:
 		if Input.is_action_just_pressed("ui_accept"):
 			attack()
-			# TODO: charge timer/state
 			charge_start_time = Time.get_time_dict_from_system().second
-			data.state = STATES.CHARGING 
-			if Input.is_action_just_released("ui_accept"):
-				var ctime = Time.get_time_dict_from_system().second
-				var charge_duration = ctime - charge_start_time
-				if charge_duration >= charge_time and data.state == STATES.CHARGING:
-					charged_attack()
-				else:
-					data.state = STATES.IDLE 
+			data.state = STATES.CHARGING
 		
+		if Input.is_action_just_released("ui_accept"):
+			var cur_time = Time.get_time_dict_from_system().second
+			var charge_duration = cur_time - charge_start_time
+			if charge_duration >= charge_time and data.state == STATES.CHARGING:
+				charged_attack()
+			else:
+				data.state = STATES.IDLE
+	
 	if Input.is_action_just_pressed("ui_cancel"):
 		menu_instance.show()
 		get_tree().paused = true
 
 
 func update_animation(direction):
-	var a_name = "idle_"
-	if direction.length() > 0:
-		look_direction = direction
-		a_name = "walk_"
-	if look_direction.x != 0:
-		a_name += "side"
-		$AnimatedSprite2D.flip_h = look_direction.x < 0
-	elif look_direction.y < 0:
-		a_name += "up"
-	elif look_direction.y > 0:
-		a_name += "down"
-	
-		
-	$AnimatedSprite2D.animation = a_name
-	$AnimatedSprite2D.play()
+	if data.state == STATES.IDLE:
+		var a_name = "idle_"
+		if direction.length() > 0:
+			look_direction = direction
+			a_name = "walk_"
+		if look_direction.x != 0:
+			a_name += "side"
+			$AnimatedSprite2D.flip_h = look_direction.x < 0
+		elif look_direction.y < 0:
+			a_name += "up"
+		elif look_direction.y > 0:
+			a_name += "down"
+			
+		$AnimatedSprite2D.animation = a_name
+		$AnimatedSprite2D.play()
 	pass

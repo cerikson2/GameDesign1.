@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 const SPEED = 60.0
 var MAX_HEALTH = 30.0
 var HEALTH = MAX_HEALTH
@@ -54,8 +55,9 @@ signal recovered
 
 var drops = ["drop_coin", "drop_heart"]
 
-var coin_scene = preload("res://entities/base_item.tscn")
+var coin_scene = preload("res://entities/coin.tscn")
 var heart_scene = preload("res://entities/mini_heart.tscn")
+var damage_shader = preload("res://assets/shaders/take_damage.tres")
 
 func vec2_offset():
 	return Vector2(randf_range(-10.0, 10.0), randf_range(-10.0, 10.0))
@@ -99,7 +101,9 @@ func take_damage(dmg, attacker=null):
 		HEALTH -= dmg
 		damage_lock = 0.2
 		animation_lock = 0.2
-		# TODO: damage shader
+		var dmg_intensity = clamp(1.0-((HEALTH+0.01)/MAX_HEALTH), 0.1, 0.8)
+		$AnimatedSprite2D.material = damage_shader.duplicate()
+		$AnimatedSprite2D.material.set_shader_parameter("intensity", dmg_intensity)
 		if HEALTH <= 0:
 			drop_items()
 			# TODO: play death sound
@@ -123,18 +127,18 @@ func _physics_process(delta):
 			raydir.rotated(deg_to_rad(45)).normalized() * vision_distance
 	if animation_lock == 0.0:
 		if AI_STATE == STATES.DAMAGED:
-			# TODO: reset shader
+			$AnimatedSprite2D.material = null
 			AI_STATE = STATES.IDLE
 			recovered.emit()
 		for player in get_tree().get_nodes_in_group("Player"):
-			
+			if $AttackBox.overlaps_body(player):
 				if player.damage_lock == 0.0:
 					var inert = (player.global_position-self.global_position)
 					player.inertia = inert.normalized() * knockback
 					player.take_damage(DAMAGE)
 				else:
 					continue
-				if player.data.state != player.STATES.DEAD:
+			if player.data.state != player.STATES.DEAD:
 				if (raycastM.is_colliding() and raycastM.get_collider() == player) or \
 				   (raycastL.is_colliding() and raycastL.get_collider() == player) or \
 				   (raycastR.is_colliding() and raycastR.get_collider() == player):
