@@ -136,7 +136,7 @@ func _physics_process(delta):
 			AI_STATE = STATES.IDLE
 			recovered.emit()
 		for player in get_tree().get_nodes_in_group("Player"):
-			if $AttackBox.overlaps_body(player):
+			if $AttackBox.overlaps.body(player):
 				if player.damage_lock == 0.0:
 					var inert = (player.global_position-self.global_position)
 					player.inertia = inert.normalized() * knockback

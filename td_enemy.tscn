@@ -157,14 +157,17 @@ animation = &"e_walk_up"
 
 [node name="RayCast2DM" type="RayCast2D" parent="." groups=["RayCast2DM"]]
 position = Vector2(25, 18)
+enabled = false
 target_position = Vector2(-56, -1)
 
 [node name="RayCast2DL" type="RayCast2D" parent="." groups=["RayCast2DL"]]
 position = Vector2(24, 18)
+enabled = false
 target_position = Vector2(-49, 20)
 
 [node name="RayCast2DR" type="RayCast2D" parent="." groups=["RayCast2DR"]]
 position = Vector2(25, 18)
+enabled = false
 target_position = Vector2(-50, -22)
 
 [node name="AttackBox" type="CollisionShape2D" parent="." groups=["AttackBox"]]
