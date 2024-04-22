@@ -123,9 +123,19 @@ func _physics_process(delta):
 	animation_lock = max(animation_lock-delta, 0.0)
 	damage_lock = max(damage_lock-delta, 0.0)
 	
-	if animation_lock == 0.0 and data.state != STATES.DEAD:
-		if data.state == STATES.DAMAGED and max(damage_lock-delta, 0.0):
-			$AnimatedSprite2D.material = null
+	if Input.is_action_just_pressed("ui_select"):
+		for entity in get_tree().get_nodes_in_group("Interactable"):
+			if entity.in_range(self):
+				entity.interact(self)
+				data.state = STATES.IDLE 
+				return
+	
+	
+	
+
+		if animation_lock == 0.0 and data.state != STATES.DEAD:
+			if data.state == STATES.DAMAGED and max(damage_lock-delta, 0.0):
+				$AnimatedSprite2D.material = null
 		
 		if data.state != STATES.CHARGING:
 			data.state = STATES.IDLE
@@ -163,6 +173,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		menu_instance.show()
 		get_tree().paused = true
+
 
 
 func update_animation(direction):
