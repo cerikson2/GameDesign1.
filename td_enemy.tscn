@@ -143,8 +143,8 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7h56"]
-size = Vector2(20, 24)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qc0gb"]
+size = Vector2(18, 23)
 
 [node name="td_enemy" type="CharacterBody2D"]
 script = ExtResource("1_ihwch")
@@ -157,19 +157,20 @@ animation = &"e_walk_up"
 
 [node name="RayCast2DM" type="RayCast2D" parent="." groups=["RayCast2DM"]]
 position = Vector2(25, 18)
-enabled = false
 target_position = Vector2(-56, -1)
 
 [node name="RayCast2DL" type="RayCast2D" parent="." groups=["RayCast2DL"]]
 position = Vector2(24, 18)
-enabled = false
 target_position = Vector2(-49, 20)
 
 [node name="RayCast2DR" type="RayCast2D" parent="." groups=["RayCast2DR"]]
 position = Vector2(25, 18)
-enabled = false
 target_position = Vector2(-50, -22)
+collide_with_areas = true
 
-[node name="AttackBox" type="CollisionShape2D" parent="." groups=["AttackBox"]]
-position = Vector2(28, 9)
-shape = SubResource("RectangleShape2D_x7h56")
+[node name="AttackBox" type="Area2D" parent="."]
+position = Vector2(29, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_qc0gb")

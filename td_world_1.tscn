@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://630dbur2rnj4"]
+[gd_scene load_steps=10 format=3 uid="uid://630dbur2rnj4"]
 
 [ext_resource type="Texture2D" uid="uid://bnpggdagc5186" path="res://assets/sprites/zelda_like/Overworld.png" id="1_k6ylj"]
 [ext_resource type="PackedScene" uid="uid://cjkddr3rdhd18" path="res://td_player.tscn" id="2_3k3r7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b07tr3mbkj3gx" path="res://player_hud.tscn" id="4_c1yo1"]
 [ext_resource type="PackedScene" uid="uid://bderauh1yi81e" path="res://td_enemy.tscn" id="5_d2bdq"]
 [ext_resource type="PackedScene" uid="uid://615vaysnts05" path="res://entities/base_item.tscn" id="6_0rwhu"]
+[ext_resource type="PackedScene" uid="uid://dp27om003d0qg" path="res://entities/objects/SmallChest.tscn" id="7_8pa1d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_74k1s"]
 texture = ExtResource("1_k6ylj")
@@ -3173,21 +3174,24 @@ layer_0/tile_data = PackedInt32Array(-131086, 1114112, 10, -65550, 1114112, 10, 
 visible = false
 
 [node name="td_player" parent="." instance=ExtResource("2_3k3r7")]
-position = Vector2(642, 293)
+position = Vector2(598, 493)
 
 [node name="player_hud" parent="." instance=ExtResource("4_c1yo1")]
 
 [node name="td_enemy" parent="." instance=ExtResource("5_d2bdq")]
-position = Vector2(964, 500)
+position = Vector2(927, 487)
 
 [node name="td_enemy2" parent="." instance=ExtResource("5_d2bdq")]
-position = Vector2(861, 214)
+position = Vector2(908, 152)
 
 [node name="td_enemy3" parent="." instance=ExtResource("5_d2bdq")]
-position = Vector2(405, 281)
+position = Vector2(292, 322)
 
 [node name="BaseItem" parent="." instance=ExtResource("6_0rwhu")]
-position = Vector2(279, 238)
+position = Vector2(326, 174)
 
 [node name="BaseItem2" parent="." instance=ExtResource("6_0rwhu")]
-position = Vector2(804, 404)
+position = Vector2(801, 319)
+
+[node name="SmallChest" parent="." instance=ExtResource("7_8pa1d")]
+position = Vector2(570, 126)
