@@ -16,7 +16,7 @@ script = ExtResource("1_0be81")
 position = Vector2(32.5, 32.5)
 scale = Vector2(1.9375, 1.94444)
 texture = ExtResource("1_e2rpl")
-hframes = 33
+hframes = 35
 vframes = 17
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

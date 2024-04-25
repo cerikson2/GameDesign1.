@@ -3243,7 +3243,7 @@ layer_0/tile_data = PackedInt32Array(524320, 524288, 31, 524321, 589824, 31, 589
 [node name="player_hud" parent="." instance=ExtResource("2_kkv8o")]
 
 [node name="td_player" parent="." instance=ExtResource("3_ksijq")]
-position = Vector2(552, 356)
+position = Vector2(498, 368)
 
 [node name="td_enemy" parent="." instance=ExtResource("4_ypjpi")]
 position = Vector2(629, 442)
