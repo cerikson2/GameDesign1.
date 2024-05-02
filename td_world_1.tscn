@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://630dbur2rnj4"]
+[gd_scene load_steps=11 format=3 uid="uid://630dbur2rnj4"]
 
 [ext_resource type="Texture2D" uid="uid://bnpggdagc5186" path="res://assets/sprites/zelda_like/Overworld.png" id="1_k6ylj"]
 [ext_resource type="PackedScene" uid="uid://cjkddr3rdhd18" path="res://td_player.tscn" id="2_3k3r7"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bderauh1yi81e" path="res://td_enemy.tscn" id="5_d2bdq"]
 [ext_resource type="PackedScene" uid="uid://615vaysnts05" path="res://entities/base_item.tscn" id="6_0rwhu"]
 [ext_resource type="PackedScene" uid="uid://dp27om003d0qg" path="res://entities/objects/SmallChest.tscn" id="7_8pa1d"]
+[ext_resource type="PackedScene" uid="uid://dv2pgsym8d7e3" path="res://change_lvl.tscn" id="8_yf5e6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_74k1s"]
 texture = ExtResource("1_k6ylj")
@@ -3195,3 +3196,6 @@ position = Vector2(876, 451)
 
 [node name="td_enemy3" parent="." instance=ExtResource("5_d2bdq")]
 position = Vector2(851, 191)
+
+[node name="change_lvl" parent="." instance=ExtResource("8_yf5e6")]
+position = Vector2(687, 140)
