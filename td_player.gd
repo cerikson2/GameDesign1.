@@ -21,23 +21,18 @@ var damage_lock = 0.0
 var charge_time = 2.5
 var charge_start_time = 0.0
 
-var pickup_coin = preload ("res://assets/sounds/pickupCoin.wav")
-var charge_attack_sound = preload ("res://assets/sounds/powerUp.wav")
 var slash_scene = preload("res://entities/attacks/slash.tscn")
 var menu_scene = preload("res://my_gui.tscn")
 var damage_shader = preload("res://assets/shaders/take_damage.tres")
-var hurt_sound = preload ("res://assets/sounds/hurt.wav")
-var death_sound = preload("res://assets/sounds/hitHurt.wav")
 var attack_sound = preload("res://assets/sounds/slash.wav")
-var heart_pickup = preload ('res://assets/sounds/heart.wav')
 var menu_instance = null
-
 
 @onready var aud_player = $AudioStreamPlayer2D
 @onready var p_HUD = get_tree().get_first_node_in_group("HUD")
-#Add and preload sounds - attack, death, hurt, coin, miniheart, charge_attack
-#aud_player.stream = whatever_sound
-#aud_player.play(
+# TODO: Add & preload sounds - attack, death, hurt, coin, miniheart, charge_attack
+# aud_player.stream = whatever_sound
+# aud_player.play()
+
 
 func get_direction_name():
 	return ["right", "down", "left", "up"][
@@ -55,7 +50,7 @@ func attack():
 	slash.position = attack_direction * 20.0
 	slash.rotation = Vector2().angle_to_point(-attack_direction)
 	add_child(slash)
-	aud_player.stream = attack_sound 
+	aud_player.stream = attack_sound
 	aud_player.play()
 	animation_lock = 0.2
 
@@ -74,8 +69,6 @@ func charged_attack():
 		slash.damage *= 1.5
 		add_child(slash)
 		await get_tree().create_timer(0.03).timeout
-	aud_player.stream = charge_attack_sound
-	aud_player.play()
 	animation_lock = 0.2
 	await $AnimatedSprite2D.animation_finished
 	data.state = STATES.IDLE
@@ -83,14 +76,11 @@ func charged_attack():
 
 func pickup_money(value):
 	data.money += value
-	aud_player.stream = pickup_coin
-	aud_player.play()
 
 func pickup_health(value):
 	data.health += value
 	data.health = clamp(data.health, 0, data.max_health)
-	aud_player.stream = heart_pickup
-	aud_player.play()
+
 signal health_depleted
 
 func take_damage(dmg):
@@ -103,18 +93,15 @@ func take_damage(dmg):
 		$AnimatedSprite2D.material.set_shader_parameter("intensity", 0.5)
 		if data.health <= 0:
 			data.state = STATES.DEAD
-			aud_player.stream = death_sound
-			aud_player.play()
+			# TODO: play death animation & sound
 			await get_tree().create_timer(0.5).timeout
 			health_depleted.emit()
 		else:
-			aud_player.stream = hurt_sound
-			aud_player.play()
+			# TODO: play damage sound
 			pass
 	pass
 
 func _ready():
-	p_HUD.show()
 	menu_instance = menu_scene.instantiate()
 	$Camera2D.add_child.call_deferred(menu_instance)
 	menu_instance.hide()
@@ -123,19 +110,9 @@ func _physics_process(delta):
 	animation_lock = max(animation_lock-delta, 0.0)
 	damage_lock = max(damage_lock-delta, 0.0)
 	
-	if Input.is_action_just_pressed("ui_select"):
-		for entity in get_tree().get_nodes_in_group("Interactable"):
-			if entity.in_range(self):
-				entity.interact(self)
-				data.state = STATES.IDLE 
-				return
-	
-	
-	
-
-		if animation_lock == 0.0 and data.state != STATES.DEAD:
-			if data.state == STATES.DAMAGED and max(damage_lock-delta, 0.0):
-				$AnimatedSprite2D.material = null
+	if animation_lock == 0.0 and data.state != STATES.DEAD:
+		if data.state == STATES.DAMAGED and max(damage_lock-delta, 0.0):
+			$AnimatedSprite2D.material = null
 		
 		if data.state != STATES.CHARGING:
 			data.state = STATES.IDLE
@@ -173,7 +150,6 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		menu_instance.show()
 		get_tree().paused = true
-
 
 
 func update_animation(direction):

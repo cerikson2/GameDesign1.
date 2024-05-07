@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://trs40416xexr"]
+[gd_scene load_steps=6 format=3 uid="uid://trs40416xexr"]
 
 [ext_resource type="Texture2D" uid="uid://cp0pq3dl1hwg4" path="res://assets/sprites/magecity.png" id="1_744hu"]
 [ext_resource type="PackedScene" uid="uid://dv2pgsym8d7e3" path="res://change_lvl.tscn" id="2_pmmh7"]
+[ext_resource type="PackedScene" uid="uid://cjkddr3rdhd18" path="res://td_player.tscn" id="3_xpxow"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ls0vw"]
 texture = ExtResource("1_744hu")
@@ -1155,3 +1156,7 @@ layer_0/tile_data = PackedInt32Array(458754, 131072, 0, 524290, 131072, 0, 58982
 
 [node name="change_lvl" parent="." instance=ExtResource("2_pmmh7")]
 position = Vector2(361, 241)
+next_level = "world_2"
+
+[node name="td_player" parent="." instance=ExtResource("3_xpxow")]
+position = Vector2(273, 344)
