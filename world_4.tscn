@@ -3246,3 +3246,4 @@ position = Vector2(469, 347)
 
 [node name="change_lvl" parent="." instance=ExtResource("3_66dip")]
 position = Vector2(-68, 354)
+next_level = "world_5"
