@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://trs40416xexr"]
+[gd_scene load_steps=7 format=3 uid="uid://trs40416xexr"]
 
 [ext_resource type="Texture2D" uid="uid://cp0pq3dl1hwg4" path="res://assets/sprites/magecity.png" id="1_744hu"]
 [ext_resource type="PackedScene" uid="uid://dv2pgsym8d7e3" path="res://change_lvl.tscn" id="2_pmmh7"]
 [ext_resource type="PackedScene" uid="uid://cjkddr3rdhd18" path="res://td_player.tscn" id="3_xpxow"]
+[ext_resource type="AudioStream" uid="uid://csv7q3lwv4pox" path="res://assets/sounds/Level_One.wav" id="4_gh5av"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ls0vw"]
 texture = ExtResource("1_744hu")
@@ -3496,3 +3497,7 @@ next_level = "world_2"
 
 [node name="td_player" parent="." instance=ExtResource("3_xpxow")]
 position = Vector2(330, 392)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gh5av")
+autoplay = true

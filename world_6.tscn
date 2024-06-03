@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsu13p4xio3ty"]
+[gd_scene load_steps=7 format=3 uid="uid://dsu13p4xio3ty"]
 
 [ext_resource type="Texture2D" uid="uid://dmn6ohxe5cmvu" path="res://assets/sprites/blowharder.png" id="1_ebbui"]
 [ext_resource type="PackedScene" uid="uid://cjkddr3rdhd18" path="res://td_player.tscn" id="2_56xem"]
 [ext_resource type="PackedScene" uid="uid://dv2pgsym8d7e3" path="res://change_lvl.tscn" id="3_5bxhm"]
+[ext_resource type="AudioStream" uid="uid://dvwg6lan1ilpm" path="res://assets/sounds/World_6.wav" id="4_ou13m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hbyaa"]
 texture = ExtResource("1_ebbui")
@@ -11339,3 +11340,7 @@ color = Color(0.733333, 0.733333, 0.733333, 1)
 [node name="change_lvl" parent="." instance=ExtResource("3_5bxhm")]
 position = Vector2(1076, 306)
 next_level = "node_2d"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ou13m")
+autoplay = true

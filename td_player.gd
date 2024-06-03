@@ -24,7 +24,6 @@ var charge_start_time = 0.0
 var slash_scene = preload("res://entities/attacks/slash.tscn")
 var menu_scene = preload("res://my_gui.tscn")
 var damage_shader = preload("res://assets/shaders/take_damage.tres")
-var attack_sound = preload("res://assets/sounds/slash.wav")
 var menu_instance = null
 
 @onready var aud_player = $AudioStreamPlayer2D
@@ -50,9 +49,6 @@ func attack():
 	slash.position = attack_direction * 20.0
 	slash.rotation = Vector2().angle_to_point(-attack_direction)
 	add_child(slash)
-	aud_player.stream = attack_sound
-	aud_player.play()
-	animation_lock = 0.2
 
 func charged_attack():
 	data.state = STATES.ATTACKING

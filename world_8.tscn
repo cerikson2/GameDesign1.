@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw4o6k784kcyw"]
+[gd_scene load_steps=6 format=3 uid="uid://cw4o6k784kcyw"]
 
 [ext_resource type="Texture2D" uid="uid://d4kvy3nlwsov0" path="res://assets/sprites/mountain_landscape.png" id="1_jqfo3"]
 [ext_resource type="PackedScene" uid="uid://cjkddr3rdhd18" path="res://td_player.tscn" id="2_v53ug"]
+[ext_resource type="AudioStream" uid="uid://rxo717nwwnwt" path="res://assets/sounds/World_8.wav" id="3_wedqs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tse1v"]
 texture = ExtResource("1_jqfo3")
@@ -2959,3 +2960,7 @@ layer_1/tile_data = PackedInt32Array(2162723, 589824, 14, 2228259, 589824, 15, 2
 
 [node name="td_player" parent="." instance=ExtResource("2_v53ug")]
 position = Vector2(162, 505)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_wedqs")
+autoplay = true
